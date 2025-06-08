@@ -15,8 +15,8 @@ public final class HotkeyMod {
 
         ClientTickEvent.CLIENT_POST.register(client -> {
             while (HOTKEY.consumeClick()) {
-                if (PlatformServices.SERVER_ADDRESS_PROVIDER.getServerAddress().toLowerCase().endsWith("smitemc.de")) {
-                    PlatformServices.PLUGIN_MESSAGE_SENDER.sendPluginMessage("smitemc:hotkey", new byte[]{1});
+                if (PlatformServices.SERVER_ADDRESS_PROVIDER.getServerAddress().toLowerCase().endsWith("smitemc.de") && client.player != null) {
+                    PlatformServices.PLUGIN_MESSAGE_SENDER.sendPluginMessage(client.player.getUUID(),"smitemc:menu_hotkey", new byte[]{1});
                 } else {
                     assert client.player != null;
                     client.player.displayClientMessage(Component.translatable("message.smitemc_hotkey.not_on_smitemc"), true);

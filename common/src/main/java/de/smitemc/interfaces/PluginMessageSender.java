@@ -1,7 +1,9 @@
 package de.smitemc.interfaces;
 
+import java.util.UUID;
+
 public interface PluginMessageSender {
 
-    void sendPluginMessage(String channel, byte[] data);
+    void sendPluginMessage(UUID uniqueId, String channel, byte[] data);
 
 }

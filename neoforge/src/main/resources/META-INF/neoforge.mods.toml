@@ -1,15 +1,15 @@
 modLoader = "javafml"
 loaderVersion = "[4,)"
-#issueTrackerURL = ""
-license = "Insert License Here"
+issueTrackerURL = "https://github.com/SmiteMCde/Menu-Hotkey/issues"
+license = "All Rights Reserved"
 
 [[mods]]
 modId = "smitemc_hotkey"
 version = "${version}"
 displayName = "SmiteMC Menu Hotkey"
-authors = "Me!"
+authors = "LeonJS_"
 description = '''
-This is an example description! Tell everyone what your mod is about!
+Adds a shortcut (hotkey) for opening the main menu for the Minecraft Earth game mode on the SmiteMC Network.
 '''
 #logoFile = ""
 

@@ -1,16 +1,18 @@
 package de.smitemc;
 
 import dev.architectury.event.events.client.ClientTickEvent;
+import dev.architectury.registry.client.keymappings.KeyMappingRegistry;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.network.chat.Component;
 import org.lwjgl.glfw.GLFW;
 
 public final class HotkeyMod {
     public static final String MOD_ID = "smitemc_hotkey";
-    public static KeyMapping HOTKEY;
+    public static KeyMapping HOTKEY = new KeyMapping("key.smitemc_hotkey.menu", GLFW.GLFW_KEY_Z, "key.categories.smitemc_hotkey");
 
     public static void init() {
-        HOTKEY = new KeyMapping("key.smitemc_hotkey.menu", GLFW.GLFW_KEY_Z, "key.categories.smitemc_hotkey");
+        KeyMappingRegistry.register(HOTKEY);
+
         ClientTickEvent.CLIENT_POST.register(client -> {
             while (HOTKEY.consumeClick()) {
                 if (PlatformServices.SERVER_ADDRESS_PROVIDER.getServerAddress().toLowerCase().endsWith("smitemc.de")) {

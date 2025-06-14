@@ -1,9 +1,11 @@
 package de.smitemc;
 
 import dev.architectury.event.events.client.ClientTickEvent;
+import dev.architectury.networking.NetworkManager;
 import dev.architectury.registry.client.keymappings.KeyMappingRegistry;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import org.lwjgl.glfw.GLFW;
 
 public final class HotkeyMod {
@@ -16,7 +18,7 @@ public final class HotkeyMod {
         ClientTickEvent.CLIENT_POST.register(client -> {
             while (HOTKEY.consumeClick()) {
                 if (PlatformServices.SERVER_ADDRESS_PROVIDER.getServerAddress().toLowerCase().endsWith("smitemc.de") && client.player != null) {
-                    PlatformServices.PLUGIN_MESSAGE_SENDER.sendPluginMessage(client.player.getUUID(),"smitemc:menu_hotkey", new byte[]{1});
+                    NetworkManager.sendToServer(new PluginMessagePacket(ResourceLocation.bySeparator("smitemc:menu_hotkey", ':'), new byte[0]));
                 } else {
                     assert client.player != null;
                     client.player.displayClientMessage(Component.translatable("message.smitemc_hotkey.not_on_smitemc"), true);

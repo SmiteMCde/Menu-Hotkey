@@ -8,7 +8,6 @@ import de.smitemc.HotkeyMod;
 @Mod(HotkeyMod.MOD_ID)
 public final class HotkeyModNeoForge {
     public HotkeyModNeoForge() {
-        PlatformServices.PLUGIN_MESSAGE_SENDER = new NeoForgePluginMessageSender();
         PlatformServices.SERVER_ADDRESS_PROVIDER = new NeoForgeServerAddressProvider();
         HotkeyMod.init();
     }
